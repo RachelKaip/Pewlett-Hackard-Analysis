@@ -10,30 +10,31 @@ When condusting these quereies, there were a few major conditions that we neeed 
 
 1. When creating the retirement_titles table, we were querying infromation from the employees table and the titles table- two tables that held information about all of PH's employees, not just the ones ready to retire.  Thus, we needed to make sure that we added a **WHERE** statment to pull only employees with birth dates within the years 1952 and 1955.  
 
-insert image 
+![birth_date_condition](https://user-images.githubusercontent.com/94569240/152410565-82b839a8-d632-4ca0-a7e9-42c2e211d221.PNG)
+
 
 2. Once we created the retirement_titles table with employees born in the years 1952 and 1955 only, we realized that list also included employees who were no longer at the company.  To comabt this, we created another query to filter the retirement_titles table by the employee's "to date" with another **WHERE** function.  This returned only the employees who were still at the company, ready to retire.  
 
-insert image
+![current_employees_no_dupes](https://user-images.githubusercontent.com/94569240/152410625-e39a13f0-dde8-4846-ab17-f5e2344966a1.PNG)
 
 3. In the same query as above, we also used the **DISTINCT ON** function (highlighted in the image above) within our **SELECT** statement to only pull the first occurence/the most recent occurance of each employee number which eliminated the duplicate records.  
 
-In the image below, you can see that the retirement_titles table includes employees multiple times, making the list longer and the unique_titles table does not.  
+In the images below, you can see that the retirement_titles table includes employees multiple times, making the list longer and the unique_titles table does not.  
 
-insert image
-
-insert image
+![retirement_titles_dupes](https://user-images.githubusercontent.com/94569240/152410743-90987b4d-03e9-4a89-bd86-29d6b8a8ec05.PNG)
+![unique_titles](https://user-images.githubusercontent.com/94569240/152410753-9e73df91-afa4-46cd-9c6f-fbea156ed7cc.PNG)
 
 4. From these queries we were able to utilize the **COUNT** funtion within our **SELECT** statement to get a clean, total count of how many uniqe titles are ready for retirement. 
 
-insert image
-
-insert image
+![count](https://user-images.githubusercontent.com/94569240/152410800-5d4371e5-ba64-4e91-9b15-50f44e0bdd12.PNG)
+![retiring_titles](https://user-images.githubusercontent.com/94569240/152410819-051d48eb-f9c1-40ba-9f8d-227124de5386.PNG)
 
 5. Finally, the mentroship_eligibility query required us to inner join three tables, employees, titles, and department_employees to get a list of the employees eligible to participate in the mentorship program.  For this, we had to keep all of the points above in mid as well.  
    a. We needed to used the **DISTINCT ON** funtion to ensure we only returned the first occurence of each employee id.
    b. Filtered with the **WHERE** statement on the to-date column to collect only employees still with the company.
    c. Then filtered again with *another* **WHERE** statement to collect employees born in the year 1965 only.  
+
+![mentorship_retiring_emps](https://user-images.githubusercontent.com/94569240/152410840-547b1e11-8441-42d1-9e9c-9dd8e0c03532.PNG)
 
 ## Summary 
 
@@ -50,8 +51,9 @@ to take the analysis one step further, I reccomend that PH starts to prioritize 
 
 1. The first way is to look at who is ready to move into leadership based on seniority of title.  The query pictured below will help PH see all their mentorship eligible employees with 'Senior' titles ordered by their tenure in the company.  
 
-insert picture 
+ ![leadership_mentor_priority](https://user-images.githubusercontent.com/94569240/152410876-1c377f67-d675-4635-a3d1-906ee4551f3d.PNG)
 
 2.  The other way that PH could organize thier program is with the querey pictured below that returns a list of all the eligible employees by title and from_date.  
 
-insert image
+![mentorship_priority](https://user-images.githubusercontent.com/94569240/152410907-dc502085-0844-4987-8664-5b134ece73ce.PNG)
+
